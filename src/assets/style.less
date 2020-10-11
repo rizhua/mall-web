@@ -2,23 +2,41 @@
 
 body {
     margin: 0;
-    width: 100%;
     overflow-x: hidden;
     font-size: 12px/1.5;
-    font-family: PingFangSC,helvetica neue,hiragino sans gb,arial,microsoft yahei ui,microsoft yahei,simsun,sans-serif;
+    font-family: PingFangSC, helvetica neue, hiragino sans gb, arial, microsoft yahei ui, microsoft yahei, simsun, sans-serif;
 }
 
 a {
+    color: #666;
     text-decoration: none;
+}
+
+input {
+    border-width: 1px;
+}
+
+button {
+    border-width: 1px;
 }
 
 // 列表
 .no-bullet {
-    margin-bottom: 0;
+    margin: 0;
     padding-left: 0;
     list-style: none;
+
     li {
         list-style-image: none;
         list-style-type: none;
     }
+}
+
+ul {
+    .no-bullet
+}
+
+.wrap {
+    margin: 0 auto;
+    width: 1206px;
 }

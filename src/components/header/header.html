@@ -1,0 +1,106 @@
+<header>
+    <section class="toolbar">
+        <div class="top-tool">
+            <div class="user-auth">
+                <span>日抓商城欢迎您！</span>
+                <router-link to="/">登录</router-link>
+                <router-link to="/">免费注册</router-link>
+            </div>
+            <ul class="user-info">
+                <li>购物车<sup>0</sup></li>
+                <li>每日签到</li>
+                <li>个人中心</li>
+                <li>客户服务</li>
+            </ul>
+        </div>
+    </section>
+    <nav class="nav-wrap">
+        <h1 class="logo">
+            <router-link to="/">
+            <img src="../../assets/img/logo.png" :title="msg" :alt="msg">
+            </router-link>
+        </h1>
+        <ul class="pro-nav">
+            <li class="pro-item" v-if="!isOpen" @mouseover="onMouse(true)">
+                <a href="javascript:;">所有分类</a>
+            </li>
+            <li class="pro-item">
+                <router-link to="">设计服务</router-link>
+            </li>
+            <li class="pro-item">
+                <router-link to="">运营管家</router-link>
+            </li>
+            <li class="pro-item">
+                <router-link to="">开放平台</router-link>
+            </li>
+        </ul>
+        <form class="search-form">
+            <div class="search-group">
+                <input v-model="model.keyword" type="text">
+                <button class="iconfont" type="submit" @click="search">&#xe63f;</button>
+            </div>
+            <ul class="key-list">
+                <li class="key-item">
+                    <a href="">冰箱</a>
+                </li>
+                <li class="key-item">
+                    <a href="">小冰箱</a>
+                </li>
+                <li class="key-item">
+                    <a href="">冰箱美的</a>
+                </li>
+            </ul>
+        </form>
+        <ul class="cat-list" v-bind:class="{active: catShow}"  @mouseover="onMouse(true)" @mouseout="onMouse(false)">
+            <li class="cat-item">
+                <router-link to="">
+                    <i class="iconfont">&#xe67f;</i>
+                    <span>母婴儿童</span>
+                    <i class="iconfont">&#xe66f;</i>
+                </router-link>
+            </li>
+            <li class="cat-item">
+                <router-link to="">
+                    <i class="iconfont">&#xe67f;</i>
+                    <span>母婴儿童</span>
+                    <i class="iconfont">&#xe66f;</i>
+                </router-link>
+            </li>
+            <li class="cat-item">
+                <router-link to="">
+                    <i class="iconfont">&#xe67f;</i>
+                    <span>母婴儿童</span>
+                    <i class="iconfont">&#xe66f;</i>
+                </router-link>
+            </li>
+            <li class="cat-item">
+                <router-link to="">
+                    <i class="iconfont">&#xe67f;</i>
+                    <span>母婴儿童</span>
+                    <i class="iconfont">&#xe66f;</i>
+                </router-link>
+            </li>
+            <li class="cat-item">
+                <router-link to="">
+                    <i class="iconfont">&#xe67f;</i>
+                    <span>母婴儿童</span>
+                    <i class="iconfont">&#xe66f;</i>
+                </router-link>
+            </li>
+            <li class="cat-item">
+                <router-link to="">
+                    <i class="iconfont">&#xe67f;</i>
+                    <span>母婴儿童</span>
+                    <i class="iconfont">&#xe66f;</i>
+                </router-link>
+            </li>
+            <li class="cat-item">
+                <router-link to="">
+                    <i class="iconfont">&#xe67f;</i>
+                    <span>母婴儿童</span>
+                    <i class="iconfont">&#xe66f;</i>
+                </router-link>
+            </li>
+        </ul>
+    </nav>
+</header>

@@ -1,3 +1,293 @@
-<div>
-    <rz-header  msg="Welcome to Your Vue.js App"></rz-header>
+<div class="container">
+  <rz-header msg="Welcome to Your Vue.js App" :isOpen="true"></rz-header>
+  <el-carousel height="380px" style="clear: both;">
+    <el-carousel-item v-for="item in 4" :key="item">
+      <h3>{{ item }}</h3>
+    </el-carousel-item>
+  </el-carousel>
+  <section class="floor-wrap">
+    <div class="floor-name">
+      <h2>今日上新</h2>
+      <span class="desc">全世界好物，0点更新</span>
+      <a class="more" href="#">
+        <span>进入新品频道</span><i class="iconfont">&#xe66f;</i>
+      </a>
+    </div>
+    <ul class="floor-list">
+      <li class="floor-item">
+        <div class="pic">
+          <img src="https://gw.alicdn.com/bao/uploaded/i1/2885759375/O1CN01teIqBZ2J7ngHDt045_!!0-item_pic.jpg">
+        </div>
+        <h3 class="title">女装 圆领T恤(短袖) 414443 优衣库</h3>
+        <p class="price">
+          <abbr>￥</abbr>
+          <span class="num">88</span>
+          <del>
+            <abbr>￥</abbr>
+            <span class="num">100</span>
+          </del>
+        </p>
+      </li>
+      <li class="floor-item">
+        <div class="pic">
+          <img src="https://gw.alicdn.com/bao/uploaded/i1/2885759375/O1CN01teIqBZ2J7ngHDt045_!!0-item_pic.jpg">
+        </div>
+        <h3 class="title">女装 圆领T恤(短袖) 414443 优衣库</h3>
+        <p class="price">
+          <abbr>￥</abbr>
+          <span class="num">88</span>
+          <del>
+            <abbr>￥</abbr>
+            <span class="num">100</span>
+          </del>
+        </p>
+      </li>
+      <li class="floor-item">
+        <div class="pic">
+          <img src="https://gw.alicdn.com/bao/uploaded/i1/2885759375/O1CN01teIqBZ2J7ngHDt045_!!0-item_pic.jpg">
+        </div>
+        <h3 class="title">女装 圆领T恤(短袖) 414443 优衣库</h3>
+        <p class="price">
+          <abbr>￥</abbr>
+          <span class="num">88</span>
+          <del>
+            <abbr>￥</abbr>
+            <span class="num">100</span>
+          </del>
+        </p>
+      </li>
+      <li class="floor-item">
+        <div class="pic">
+          <img src="https://gw.alicdn.com/bao/uploaded/i1/2885759375/O1CN01teIqBZ2J7ngHDt045_!!0-item_pic.jpg">
+        </div>
+        <h3 class="title">女装 圆领T恤(短袖) 414443 优衣库</h3>
+        <p class="price">
+          <abbr>￥</abbr>
+          <span class="num">88</span>
+          <del>
+            <abbr>￥</abbr>
+            <span class="num">100</span>
+          </del>
+        </p>
+      </li>
+      <li class="floor-item">
+        <div class="pic">
+          <img src="https://gw.alicdn.com/bao/uploaded/i1/2885759375/O1CN01teIqBZ2J7ngHDt045_!!0-item_pic.jpg">
+        </div>
+        <h3 class="title">女装 圆领T恤(短袖) 414443 优衣库</h3>
+        <p class="price">
+          <abbr>￥</abbr>
+          <span class="num">88</span>
+          <del>
+            <abbr>￥</abbr>
+            <span class="num">100</span>
+          </del>
+        </p>
+      </li>
+    </ul>
+  </section>
+  <section class="floor-wrap">
+    <div class="floor-name">
+      <h2>热门品牌</h2>
+      <span class="desc">全球精选，一网打尽</span>
+      <a class="action" href="#">
+        <span>换一批</span><i class="iconfont">&#xe631;</i>
+      </a>
+    </div>
+    <div class="brand-list">
+      <div class="brand-item">
+        <div class="brand-img">
+          <img src="https://img.alicdn.com/i2/2/TB1ilbUHpXXXXb8XXXXSutbFXXX.jpg_125x125q100.jpg_.webp">
+        </div>
+        <a class="brand-mask">
+          <div class="coupon">上海大众</div>
+          <div class="enter">点击进入</div>
+        </a>
+      </div>
+      <div class="brand-item">
+        <div class="brand-img">
+          <img src="https://img.alicdn.com/i2/2/TB1ilbUHpXXXXb8XXXXSutbFXXX.jpg_125x125q100.jpg_.webp">
+        </div>
+        <a class="brand-mask">
+          <div class="coupon">上海大众</div>
+          <div class="enter">点击进入</div>
+        </a>
+      </div>
+      <div class="brand-item">
+        <div class="brand-img">
+          <img src="https://img.alicdn.com/i2/2/TB1ilbUHpXXXXb8XXXXSutbFXXX.jpg_125x125q100.jpg_.webp">
+        </div>
+        <a class="brand-mask">
+          <div class="coupon">上海大众</div>
+          <div class="enter">点击进入</div>
+        </a>
+      </div>
+      <div class="brand-item">
+        <div class="brand-img">
+          <img src="https://img.alicdn.com/i2/2/TB1ilbUHpXXXXb8XXXXSutbFXXX.jpg_125x125q100.jpg_.webp">
+        </div>
+        <a class="brand-mask">
+          <div class="coupon">上海大众</div>
+          <div class="enter">点击进入</div>
+        </a>
+      </div>
+      <div class="brand-item">
+        <div class="brand-img">
+          <img src="https://img.alicdn.com/i2/2/TB1ilbUHpXXXXb8XXXXSutbFXXX.jpg_125x125q100.jpg_.webp">
+        </div>
+        <a class="brand-mask">
+          <div class="coupon">上海大众</div>
+          <div class="enter">点击进入</div>
+        </a>
+      </div>
+      <div class="brand-item">
+        <div class="brand-img">
+          <img src="https://img.alicdn.com/i2/2/TB1ilbUHpXXXXb8XXXXSutbFXXX.jpg_125x125q100.jpg_.webp">
+        </div>
+        <a class="brand-mask">
+          <div class="coupon">上海大众</div>
+          <div class="enter">点击进入</div>
+        </a>
+      </div>
+      <div class="brand-item">
+        <div class="brand-img">
+          <img src="https://img.alicdn.com/i2/2/TB1ilbUHpXXXXb8XXXXSutbFXXX.jpg_125x125q100.jpg_.webp">
+        </div>
+        <a class="brand-mask">
+          <div class="coupon">上海大众</div>
+          <div class="enter">点击进入</div>
+        </a>
+      </div>
+      <div class="brand-item">
+        <div class="brand-img">
+          <img src="https://img.alicdn.com/i2/2/TB1ilbUHpXXXXb8XXXXSutbFXXX.jpg_125x125q100.jpg_.webp">
+        </div>
+        <a class="brand-mask">
+          <div class="coupon">上海大众</div>
+          <div class="enter">点击进入</div>
+        </a>
+      </div>
+      <div class="brand-item">
+        <div class="brand-img">
+          <img src="https://img.alicdn.com/i2/2/TB1ilbUHpXXXXb8XXXXSutbFXXX.jpg_125x125q100.jpg_.webp">
+        </div>
+        <a class="brand-mask">
+          <div class="coupon">上海大众</div>
+          <div class="enter">点击进入</div>
+        </a>
+      </div>
+      <div class="brand-item">
+        <div class="brand-img">
+          <img src="https://img.alicdn.com/i2/2/TB1ilbUHpXXXXb8XXXXSutbFXXX.jpg_125x125q100.jpg_.webp">
+        </div>
+        <a class="brand-mask">
+          <div class="coupon">上海大众</div>
+          <div class="enter">点击进入</div>
+        </a>
+      </div>
+      <div class="brand-item">
+        <div class="brand-img">
+          <img src="https://img.alicdn.com/i2/2/TB1ilbUHpXXXXb8XXXXSutbFXXX.jpg_125x125q100.jpg_.webp">
+        </div>
+        <a class="brand-mask">
+          <div class="coupon">上海大众</div>
+          <div class="enter">点击进入</div>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="floor-wrap">
+    <div class="floor-name">
+      <h2>母婴儿童</h2>
+      <dl class="tag-list">
+        <dt class="tag-illu">热搜词：</dt>
+        <dd class="tag-item"><a href="">家居出行</a></dd>
+        <dd class="tag-item"><a href="">童装童鞋</a></dd>
+      </dl>
+      <a class="more" href="#">
+        <span>更多好物</span><i class="iconfont">&#xe66f;</i>
+      </a>
+    </div>
+    <div class="floor-content">
+      <div class="floor-banner">
+        <a href="#">
+          <img
+            src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/574c6643ab91c6618bfb2d0e2c761d0b.jpg?thumb=1&w=293&h=768&f=webp&q=90">
+        </a>
+      </div>
+      <ul class="floor-list">
+        <li class="floor-item">
+          <div class="pic">
+            <img src="https://gw.alicdn.com/bao/uploaded/i1/2885759375/O1CN01teIqBZ2J7ngHDt045_!!0-item_pic.jpg">
+          </div>
+          <h3 class="title">女装 圆领T恤(短袖) 414443 优衣库</h3>
+          <p class="price">
+            <abbr>￥</abbr>
+            <span class="num">88</span>
+            <del>
+              <abbr>￥</abbr>
+              <span class="num">100</span>
+            </del>
+          </p>
+        </li>
+        <li class="floor-item">
+          <div class="pic">
+            <img src="https://gw.alicdn.com/bao/uploaded/i1/2885759375/O1CN01teIqBZ2J7ngHDt045_!!0-item_pic.jpg">
+          </div>
+          <h3 class="title">女装 圆领T恤(短袖) 414443 优衣库</h3>
+          <p class="price">
+            <abbr>￥</abbr>
+            <span class="num">88</span>
+            <del>
+              <abbr>￥</abbr>
+              <span class="num">100</span>
+            </del>
+          </p>
+        </li>
+        <li class="floor-item">
+          <div class="pic">
+            <img src="https://gw.alicdn.com/bao/uploaded/i1/2885759375/O1CN01teIqBZ2J7ngHDt045_!!0-item_pic.jpg">
+          </div>
+          <h3 class="title">女装 圆领T恤(短袖) 414443 优衣库</h3>
+          <p class="price">
+            <abbr>￥</abbr>
+            <span class="num">88</span>
+            <del>
+              <abbr>￥</abbr>
+              <span class="num">100</span>
+            </del>
+          </p>
+        </li>
+        <li class="floor-item">
+          <div class="pic">
+            <img src="https://gw.alicdn.com/bao/uploaded/i1/2885759375/O1CN01teIqBZ2J7ngHDt045_!!0-item_pic.jpg">
+          </div>
+          <h3 class="title">女装 圆领T恤(短袖) 414443 优衣库</h3>
+          <p class="price">
+            <abbr>￥</abbr>
+            <span class="num">88</span>
+            <del>
+              <abbr>￥</abbr>
+              <span class="num">100</span>
+            </del>
+          </p>
+        </li>
+        <li class="floor-item">
+          <div class="pic">
+            <img src="https://gw.alicdn.com/bao/uploaded/i1/2885759375/O1CN01teIqBZ2J7ngHDt045_!!0-item_pic.jpg">
+          </div>
+          <h3 class="title">女装 圆领T恤(短袖) 414443 优衣库</h3>
+          <p class="price">
+            <abbr>￥</abbr>
+            <span class="num">88</span>
+            <del>
+              <abbr>￥</abbr>
+              <span class="num">100</span>
+            </del>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <rz-footer></rz-footer>
 </div>
