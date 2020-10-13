@@ -13,7 +13,8 @@ header {
 }
 
 .toolbar {
-    background-color: #eee;
+    color: #999;
+    background-color: #000;
     border-bottom: 1px solid #ddd;
 }
 
@@ -27,7 +28,11 @@ header {
 
     .user-auth {
         a {
+            color: #999;
             margin-left: 1rem;
+            &:hover {
+                color: #fff;
+            }
         }
     }
 
@@ -37,10 +42,19 @@ header {
         align-items: center;
         margin: 0;
         padding-left: 0;
+        height: 100%;
         list-style-type: none;
 
         li {
             margin-left: 24px;
+        }
+
+        a {
+            color: #999;
+
+            &:hover {
+                color: #fff;
+            }
         }
     }
 }
@@ -183,6 +197,9 @@ header {
 
     a {
         color: #000;
+        &:hover {
+            color: #f02c08;
+        }
     }
 
     .pro-item {
