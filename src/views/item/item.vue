@@ -1,4 +1,4 @@
-<template src="./search.html"></template>
+<template src="./item.html"></template>
 
 <script>
 import Header from '@/components/header/header.vue';
