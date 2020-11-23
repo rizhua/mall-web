@@ -1,0 +1,98 @@
+<div>
+  <rz-header msg="日抓商城"></rz-header>
+  <div class="cartbar wrap">
+    <div class="cart-title">
+      <img src="" alt="">
+      <h2>购物车</h2>
+    </div>
+
+
+    <el-row type="flex" class="cart-table-th" style="font-size: 14px;">
+      <el-col :span="1">
+        <el-checkbox class="checkboxAll" :indeterminate="isIndeterminate" v-model="allChecked"
+          @change="changeAllChecked($event)">
+        </el-checkbox>
+      </el-col>
+      <el-col :span="6">
+        <div>商品信息</div>
+      </el-col>
+      <el-col :span="5">
+        <div>属性</div>
+      </el-col>
+      <el-col :span="3">
+        <div>单价</div>
+      </el-col>
+      <el-col :span="4">
+        <div>数量</div>
+      </el-col>
+      <el-col :span="3">
+        <div>金额</div>
+      </el-col>
+      <el-col :span="2">
+        <div>操作</div>
+      </el-col>
+    </el-row>
+
+    <div class="cart-table-tb" v-for="(store,pidx) in storeList">
+      <el-row class="table-head" style="font-size: 14px;">
+        <el-col :span="1">
+          <!--  父级 -->
+          <input @change="changeTitleChecked(null, store, pidx, $event)" :checked="store.checked" type="checkbox">
+
+        </el-col>
+        <el-col :span=" 6">
+          <span>{{store.storeName}}</span>
+        </el-col>
+      </el-row>
+
+      <el-row class="table-body" v-for="(item, index) in store.children" :key="index">
+        <el-col :span="1">
+          <!-- 子集 -->
+          <input type="checkbox" @change="changeTitleChecked(store, item, index, $event)" :checked="item.checked">
+        </el-col>
+        <el-col :span="6" class="cart-info">
+          <img :src="item.image" alt="">
+          <a href="#">{{item.title}}</a>
+        </el-col>
+        <el-col :span="5" class="cart-spec">
+          <div>{{item.spec}}</div>
+        </el-col>
+        <el-col :span="3">
+          <div>{{item.price | curreny}}</div>
+        </el-col>
+        <el-col :span="4">
+          <el-input-number size="small" @change="handleChange(index,pidx)" v-model="item.count" :min="1">
+          </el-input-number>
+        </el-col>
+        <el-col :span="3">
+          <div>￥{{item.amount | curreny}}</div>
+        </el-col>
+        <el-col :span="2" class="cart-op">
+          <a href="#">移入收藏夹</a>
+          <a href="#" @click="del(pidx,index)">删除</a>
+        </el-col>
+      </el-row>
+    </div>
+
+    <ul class="cart-floor">
+      <li class="select-all">
+        <!-- 全选 -->
+        <el-checkbox :indeterminate="isIndeterminate" v-model="allChecked" @change="changeAllChecked($event)">
+          全选</el-checkbox>
+      </li>
+      <li class="operations">
+        <a href="#" @click="selectDel">删除</a>
+        <a href="#">移除收藏夹</a>
+      </li>
+      <ul class="cart-floor-rigth">
+        <li>已选商品 {{totalNum}} 件</li>
+        <li>合计(不含运费): {{totalPrice | curreny}}</li>
+        <li>
+          <button class="submit-btn" @click="toOrder">结算</button>
+        </li>
+      </ul>
+    </ul>
+
+  </div>
+  <rz-footer></rz-footer>
+</div>
