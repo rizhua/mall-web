@@ -16,6 +16,16 @@ Vue.use(ElementUI);
 Vue.config.productionTip = false;
 Vue.prototype.$http = axios;
 
+// 货币过滤
+Vue.filter('curreny', function (value) {
+  const tempVal = Number(value).toFixed(3);
+  if (tempVal === "NaN") {
+    return "0.00";
+  }
+  const realVal = tempVal.substring(0, tempVal.length - 1);
+  return realVal;
+})
+
 new Vue({
   router,
   store,
