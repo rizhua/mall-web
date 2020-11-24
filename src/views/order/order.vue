@@ -14,7 +14,7 @@ export default {
     return {
       props: {
         lazy: true,
-        lazyLoad: this.lazyLoad,
+        lazyLoad: this.cascader,
       },
       currentAddr: {},
       addressList: [
@@ -197,7 +197,7 @@ export default {
     },
 
     // 获取省级地址
-    lazyLoad(node, resolve) {
+    cascader(node, resolve) {
       let data = {};
       if (0 < node.level) {
         data = {
