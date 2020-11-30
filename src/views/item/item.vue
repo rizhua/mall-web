@@ -9,5 +9,13 @@ export default {
     "rz-header": Header,
     "rz-footer": Footer,
   },
+  data() {
+    return {
+      user: {
+        firstName: "huang",
+        lastName: "guang",
+      },
+    };
+  },
 };
 </script>
