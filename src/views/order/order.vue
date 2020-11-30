@@ -11,63 +11,40 @@ export default {
     "rz-footer": Footer,
   },
   data() {
+    // 验证手机号的规则
+    var checkMobile = (rule, value, cb) => {
+      const regMobile = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+      if (regMobile.test(value)) {
+        return cb();
+      }
+      cb(new Error("请输入合法的手机号"));
+    };
+
+    var postCode = (rule, value, cb) => {
+      const regCode = /^[0-9]{6}$/;
+      if (regCode.test(value)) {
+        return cb();
+      }
+      cb(new Error("请输入正确的邮政编码"));
+    };
+
     return {
-      props: {
-        lazy: true,
-        lazyLoad: this.cascader,
-      },
-      currentAddr: {},
-      addressList: [
-        {
-          id: "1",
-          province: "广东省",
-          city: "深圳市",
-          receiver: "郭富城",
-          area: "南山区",
-          address: "新安街道宝民一路灶下村三坊八巷1号405",
-          mobile: "13799784355",
-          defaultAddr: true,
-        },
-        {
-          id: "2",
-          province: "黑龙江省",
-          city: "嘻哈市",
-          receiver: "张学勇",
-          area: "北野区",
-          address: "新安街道宝民一路灶下村三坊八巷1号405",
-          mobile: "13799784355",
-          defaultAddr: false,
-        },
-        {
-          id: "3",
-          province: "浙江省",
-          city: "宝路市",
-          receiver: "刘德华",
-          area: "天堂区",
-          address: "新安街道宝民一路灶下村三坊八巷1号405",
-          mobile: "13799784355",
-          defaultAddr: false,
-        },
-      ],
-      addressInfo: {
-        addr: "",
-        detailAddr: "",
-        postalCode: "",
-        receiver: "",
-        mobile: "",
-        checked: false,
-      },
       addressRules: {
-        addr: [{ required: true, trigger: "change" }],
-        detailAddr: [
+        addrId: [{ required: true, message: "请输入地址", trigger: "blur" }],
+        detail: [
           {
             required: true,
             message: "详细地址长度需要在5-120个汉字或字符，不能包含表情符号",
             trigger: "blur",
           },
         ],
-        postalCode: [],
-        receiver: [
+        postalCode: [
+          {
+            validator: postCode,
+            trigger: "blur",
+          },
+        ],
+        Consignee: [
           {
             required: true,
             message:
@@ -75,12 +52,13 @@ export default {
             trigger: "blur",
           },
         ],
-        mobile: [
+        tel: [
           {
             required: true,
             message: "6-20个数字",
             trigger: "blur",
           },
+          { validator: checkMobile, trigger: "blur" },
         ],
       },
       storeList: [
@@ -90,6 +68,7 @@ export default {
           message: "",
           freight: 23.5,
           totalPrice: 0,
+          textarea: "",
           children: [
             {
               id: "336",
@@ -122,6 +101,7 @@ export default {
           message: "",
           freight: 4.7,
           totalPrice: 0,
+          textarea: "",
           children: [
             {
               id: 201,
@@ -137,10 +117,16 @@ export default {
           ],
         },
       ],
-      currentIndex: 0,
+      props: {
+        lazy: true,
+        lazyLoad: this.cascader,
+      },
+      currentAddr: {},
+      addressList: [],
+      addressInfo: {},
+      currentIndex: 1,
       totalPriceAll: 0,
       addAddrdialog: false,
-      titleDialog: "",
     };
   },
   filters: {
@@ -153,8 +139,11 @@ export default {
     // 转化地址数组转为对象
   },
   mounted() {
-    // this.getAddress();
-    // this.getCart();
+    this.getAddress();
+    this.getCart();
+    this.sumPrice();
+
+    // this.cascader();
   },
   methods: {
     // 收货地址
@@ -167,33 +156,56 @@ export default {
       }).then((res) => {
         if (1000 == res.data.code) {
           this.addressList = res.data.list;
+          this.addressList.forEach((e) => {
+            let region = e.region.split(",");
+            e.city = region[0] + region[1];
+            e.detail = region[2] + e.detail;
+            if (e.IsDefault) {
+              this.currentAddr = e;
+              e.IsDefault = true;
+            } else {
+              e.IsDefault = false;
+            }
+          });
+          console.log(this.addressList);
+          // this.addressList.sort(function(a, b) {
+          //   return b.IsDefault - a.IsDefault;
+          // });
         } else {
-          // this.addressList = [];
+          this.addressList = [];
         }
-
-        let defaultAddr = this.addressList.filter((addr) => {
-          return addr.defaultAddr == true;
-        });
-        this.currentAddr = defaultAddr[0];
-        console.log(this.currentAddr);
       });
     },
 
     // 商品数据
     getCart() {
-      let data = {};
-      this.$http({
-        method: "get",
-        url: "/api/cart/list",
-        params: data,
-      }).then((res) => {
-        if (1000 == res.data.code) {
-          this.storeList = res.data.list;
-        } else {
-          // this.storeList = [];
-        }
-        this.sumPrice();
+      // let data = {};
+      // this.$http({
+      //   method: "get",
+      //   url: "/api/cart/list",
+      //   params: data,
+      // }).then((res) => {
+      //   if (1000 == res.data.code) {
+      //     // this.storeList = res.data.list;
+      //   } else {
+      //     // this.storeList = [];
+      //   }
+      this.sumPrice();
+      // });
+    },
+
+    sumPrice() {
+      let amount = 0;
+      this.storeList.forEach((e) => {
+        amount = 0;
+        e.children.forEach((v) => {
+          amount += v.amount;
+          e.totalPrice = amount + e.freight;
+        });
       });
+      this.totalPriceAll = this.storeList.reduce(function(pre, item) {
+        return pre + item.totalPrice;
+      }, 0);
     },
 
     // 获取省级地址
@@ -220,50 +232,66 @@ export default {
       });
     },
 
-    sumPrice() {
-      let amount = 0;
-      this.storeList.forEach((e) => {
-        amount = 0;
-        e.children.forEach((v) => {
-          amount += v.amount;
-          e.totalPrice = amount + e.freight;
-        });
-      });
-      this.totalPriceAll = this.storeList.reduce(function(pre, item) {
-        return pre + item.totalPrice;
-      }, 0);
-    },
-
+    // 切换地址
     toggleAddr(index) {
       this.currentIndex = index;
       this.currentAddr = this.addressList[index];
     },
 
-    dialog(index) {
-      if (!isNaN(index)) {
-        console.log(index);
-        this.titleDialog = "修改地址";
-      } else {
-        this.titleDialog = "添加地址";
-      }
-      this.addAddrdialog = true;
-    },
-
-    setAddress() {
-      let data = {};
-      this.$http({
-        method: "post",
-        url: "/api/area/setAddress",
-        data: data,
-      }).then((res) => {
-        if (1000 == res.data.code) {
-          this.getAddress();
-          this.addAddrdialog = false;
-        } else {
-          this.$message.error("错误");
+    // 设置地址
+    setAddress(formName) {
+      this.$refs[formName].validate((val) => {
+        if (val) {
+          let data = this.addressInfo;
+          this.$http({
+            method: "post",
+            url: "/api/area/setAddress",
+            data: data,
+          }).then((res) => {
+            if (1000 == res.data.code) {
+              this.getAddress();
+              this.addAddrdialog = false;
+            } else {
+              this.$message.error("错误");
+            }
+          });
         }
       });
+    },
+
+    // 设为默认地址
+    setDefaultAddr(index) {
+      console.log(index);
+    },
+
+    // 修改或新建地址对话框
+    disAddress(idx) {
+      console.log(idx);
+      this.addAddrdialog = true;
+      if (!isNaN(idx)) {
+        this.addressInfo = this.addressList[idx];
+        this.addressInfo.addrId = [3392, 3496, 3503];
+      } else {
+        this.addressInfo = {};
+      }
+    },
+
+    resetForm() {
+      this.$refs.addressInfoRef.resetFields();
       this.addAddrdialog = false;
+      console.log(this.addressList);
+    },
+
+    handleChange() {
+      const checkedNodes = this.$refs["cascaderAddr"]
+        .getCheckedNodes()[0]
+        .pathLabels.join(",");
+      this.addressInfo.region = checkedNodes;
+      console.log(this.addressInfo);
+    },
+
+    submitOrder() {
+      // this.set()
     },
   },
 };
