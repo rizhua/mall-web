@@ -3,7 +3,7 @@
 }
 
 .header-wrapper {
-  margin: 20px 0;
+  margin: 24px 0;
 }
 
 .address-list {
@@ -12,19 +12,19 @@
 }
 .addr-item {
   position: relative;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  margin: 0 24px 24px 0;
   padding: 8px;
   width: 240px;
   height: 108px;
   border: 3px solid #dad9d9;
   box-sizing: border-box;
+  cursor: pointer;
 
   &:hover {
     border: 3px solid #f40;
   }
 
-  .set-default {
+  .btn-action {
     display: none;
     position: absolute;
     top: -1px;
@@ -34,7 +34,7 @@
     font-size: 500;
   }
 
-  .default-addr {
+  .btn-default {
     display: none;
     position: absolute;
     top: -1px;
@@ -46,41 +46,39 @@
   }
 }
 
-.addron {
+.active {
   border: 3px solid #f40;
-  &:hover .set-default {
+  &:hover .btn-action {
     display: block;
   }
 }
 
-.inner-info {
+.addr-wrap {
+  height: 100%;
   overflow: hidden;
-  .addr-hd {
-    width: 100%;
-    border-bottom: 1px solid #f2f2f2;
-    padding: 0 0 5px;
-    margin-bottom: 5px;
-    font-size: 14px;
-    font-weight: 700;
+}
 
-    span:nth-child(3) {
-      margin-left: 10px;
-    }
+.addr-head {
+  height: 16px;
+  font-weight: 700;
+  span {
+    margin-right: 8px;
   }
+}
 
-  .addr-bd {
-    margin-bottom: 5px;
-    height: 38px;
-    line-height: 18px;
-    font-size: 13px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+.addr-body {
+  overflow: hidden;
+  box-sizing: border-box;
+  height: 33px;
+  margin: 8px 0;
+  span {
+    margin-right: 8px;
   }
+}
 
-  .modify-oper {
+.addr-foot {
+  height: 16px;
+  a {
     display: none;
     color: #ff6633;
   }
@@ -91,24 +89,28 @@
   justify-content: space-between;
 }
 
+.input {
+  width: 260px;
+}
+
 .order-table-th {
-  margin: 80px 0 20px 0;
-  padding-bottom: 10px;
+  margin: 80px 0 24px 0;
+  padding-bottom: 8px;
   border-bottom: 1px solid #ddd;
 }
 
 .order-table-tb {
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 
 .table-head {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   padding-bottom: 8px;
   border-bottom: 1px dashed #ddd;
 }
 
 .table-body {
-  margin-bottom: 25px;
+  margin-bottom: 24px;
   font-size: 13px;
   color: #666;
   .order-info {
@@ -119,7 +121,7 @@
     }
     a {
       float: left;
-      margin-left: 10px;
+      margin-left: 8px;
       width: 200px;
       height: 32px;
       font-size: 13px;
@@ -137,7 +139,7 @@
   }
 
   .order-spec {
-    padding-right: 40px;
+    padding-right: 42px;
     div {
       height: 62px;
       font-size: 12px;
@@ -151,26 +153,19 @@
 }
 
 .order-floor {
-  padding: 15px 12px 15px 15px;
+  padding: 16px 8px 16px 16px;
   font-size: 13px;
-  background-color: rgba(242, 242, 242, 1);
+  background-color: #f2f2f2;
 
   .floor-left {
     display: flex;
     div {
       font-size: 14px;
-      margin-right: 10px;
-    }
-
-    textarea {
-      width: 300px;
-      height: 60px;
-      resize: none;
-      outline: none;
+      margin-right: 8px;
     }
   }
 
-  .order-rigth {
+  .floor-rigth {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -196,42 +191,29 @@
 
 .box-wrapper {
   overflow: hidden;
-  margin-top: 30px;
   .box {
     float: right;
-    padding: 6px 10px 10px 40px;
+    padding: 8px 8px 8px 40px;
     width: 360px;
     box-sizing: border-box;
     border: 1px solid #f40;
     text-align: right;
     font-size: 14px;
 
-    .realpay--title,
-    .confirmAddr-title {
-      margin-right: 10px;
+    .box-title {
+      margin-right: 8px;
       font-weight: 700;
       color: #333;
     }
 
-    .confirmAddr-addr-bd {
-      span {
-        margin-right: 5px;
-      }
-    }
-
-    .realpay--price-symbol {
+    .realpay-price {
       color: #f40;
       font-size: 26px;
+      font-weight: 700;
     }
 
-    .realpay--price {
-      color: #f40;
-      font: 700 26px tahoma;
-    }
-
-    .confirmAddr-addr,
-    .confirmAddr-addr-user {
-      margin-top: 8px;
+    .box-addr {
+      margin: 8px 0;
     }
   }
 }
@@ -256,4 +238,8 @@
     outline: none;
     background-color: #f40;
   }
+}
+
+.el-form-item {
+  margin-bottom: 16px;
 }
