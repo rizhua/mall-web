@@ -1,0 +1,71 @@
+<div>
+  <div class="card-header">
+    <div class="header-title">
+      <span>累积信: 41</span>
+      <span>好评率：100%</span>
+    </div>
+
+    <table class="header-table" border="1">
+      <tr>
+        <th></th>
+        <th>最近1周</th>
+        <th>最近1个月</th>
+        <th>最近6个月</th>
+        <th>6个月前</th>
+        <th>合计</th>
+      </tr>
+      <tr>
+        <th>好评</th>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <th>中评</th>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <th>差评</th>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <th>合计</th>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card-body">
+    <el-table :data="tableData" style="width: 100%">
+      <el-table-column class="one" prop="eval" :render-header="renderFirstHeader" width="160" align="center">
+      </el-table-column>
+      <el-table-column prop="date" label="评论" align="center">
+      </el-table-column>
+      <el-table-column prop="name" label="评价人">
+      </el-table-column>
+      <el-table-column prop="address" label="商品信息" width="380">
+      </el-table-column>
+    </el-table>
+  </div>
+
+  <div class="card-footer">
+    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage"
+      :page-sizes="[10, 20, 30, 40]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="100">
+    </el-pagination>
+  </div>
+
+</div>

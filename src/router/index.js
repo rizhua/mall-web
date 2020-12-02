@@ -42,7 +42,38 @@ const routes = [
       name: 'SignUp',
       component: () => import('../views/auth/sign-up/sign-up.vue')
     }]
-  }
+  },
+  {
+    path: '/user',
+    name: 'User',
+    redirect: '/user/favorite',
+    component: () => import('../views/user/user.vue'),
+    children: [{
+      path: 'favorite',
+      name: 'Favorite',
+      component: () => import('../views/user/favorite/favorite.vue')
+    }, {
+      path: 'integral',
+      name: 'Integral',
+      component: () => import('../views/user/integral/integral.vue')
+    }, {
+      path: 'myorder',
+      name: 'Myorder',
+      component: () => import('../views/user/myorder/myorder.vue')
+    }, {
+      path: 'saleService',
+      name: 'SaleService',
+      component: () => import('../views/user/saleService/saleService.vue')
+    }, {
+      path: 'manage',
+      name: 'Manage',
+      component: () => import('../views/user/manage/manage.vue')
+    }, {
+      path: 'address',
+      name: 'Address',
+      component: () => import('../views/user/address/address.vue')
+    }]
+  },
 ]
 
 const router = new VueRouter({

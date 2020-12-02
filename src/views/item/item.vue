@@ -10,12 +10,7 @@ export default {
     "rz-footer": Footer,
   },
   data() {
-    return {
-      user: {
-        firstName: "huang",
-        lastName: "guang",
-      },
-    };
+    return {};
   },
 };
 </script>

@@ -1,0 +1,63 @@
+<div class="box">
+  <div class="box-header">
+    <div class="">
+      <span>可用积分</span>
+      <span class="num">1600</span>
+    </div>
+    <div>
+      <span>即将过期</span>
+      <span class="num">250</span>
+    </div>
+    <div>
+      <span>冻结积分</span>
+      <span class="num">0</span>
+    </div>
+    <div>
+      <span>兑换</span>
+      <span>超值商品与优惠券</span>
+    </div>
+  </div>
+
+  <div class="box-body">
+    <el-row class="body-title">
+      <el-col :span="6">
+        <div>来源/用途</div>
+      </el-col>
+      <el-col :span="6">
+        <div>积分变化</div>
+      </el-col>
+      <el-col :span="6">
+        <div>日期</div>
+      </el-col>
+      <el-col :span="6">
+        <div>备注</div>
+      </el-col>
+    </el-row>
+
+    <el-row class="body-list" v-for="item in 4" :key="item.id">
+      <el-col :span="8" class="order-info">
+        <img src="../../../assets/img/xiezi.jpg" alt="">
+        <div class="info-rigth">
+          <a href="#">Midea美的台灯充插两用LED节能护眼无频闪少蓝光学生床头夹子灯</a>
+          <span>编号: 35266852656859</span>
+        </div>
+      </el-col>
+      <el-col class="data" :span="6">
+        <div>+5</div>
+      </el-col>
+      <el-col class="data" :span='6'>
+        <div>2019-11-20 18:00:00</div>
+      </el-col>
+      <el-col class="data" :span="4">
+        <div>交易获得</div>
+      </el-col>
+    </el-row>
+
+  </div>
+
+  <div class="box-footer">
+    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage"
+      :page-sizes="[10, 20, 30, 40]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="100">
+    </el-pagination>
+  </div>
+</div>

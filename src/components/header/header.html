@@ -8,13 +8,13 @@
             </div>
             <ul class="user-info">
                 <li>
-                    <a href="">购物车<sup>0</sup></a>
+                    <router-link to="/cart">购物车</router-link>
                 </li>
                 <li>
                     <a href="">每日签到</a>
                 </li>
                 <li>
-                    <a href="">个人中心</a>
+                    <router-link to="/user">个人中心</router-link>
                 </li>
                 <li>
                     <a href="">客户服务</a>
@@ -25,7 +25,7 @@
     <nav class="nav-wrap">
         <h1 class="logo">
             <router-link to="/">
-            <img src="../../assets/img/logo.jpg" :title="msg" :alt="msg">
+                <img src="../../assets/img/logo.jpg" :title="msg" :alt="msg">
             </router-link>
         </h1>
         <ul class="pro-nav">
@@ -59,7 +59,7 @@
                 </li>
             </ul>
         </form>
-        <ul class="cat-list" v-bind:class="{active: catShow}"  @mouseover="onMouse(true)" @mouseout="onMouse(false)">
+        <ul class="cat-list" v-bind:class="{active: catShow}" @mouseover="onMouse(true)" @mouseout="onMouse(false)">
             <li class="cat-item">
                 <router-link to="">
                     <i class="iconfont">&#xe67f;</i>

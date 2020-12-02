@@ -124,7 +124,7 @@ export default {
       currentAddr: {},
       addressList: [],
       addressInfo: {},
-      currentIndex: 1,
+      currentIndex: 0,
       totalPriceAll: 0,
       addAddrdialog: false,
     };
@@ -167,10 +167,10 @@ export default {
               e.IsDefault = false;
             }
           });
+          this.addressList.sort(function(a, b) {
+            return b.IsDefault - a.IsDefault;
+          });
           console.log(this.addressList);
-          // this.addressList.sort(function(a, b) {
-          //   return b.IsDefault - a.IsDefault;
-          // });
         } else {
           this.addressList = [];
         }
@@ -265,18 +265,19 @@ export default {
     },
 
     // 修改或新建地址对话框
-    disAddress(idx) {
-      console.log(idx);
+    disAddress(idx, item) {
       this.addAddrdialog = true;
+      this.addressInfo = {};
       if (!isNaN(idx)) {
-        this.addressInfo = this.addressList[idx];
+        this.addressInfo = Object.assign({}, item);
         this.addressInfo.addrId = [3392, 3496, 3503];
       } else {
-        this.addressInfo = {};
+        console.log(idx);
       }
     },
 
     resetForm() {
+      this.addressInfo = {};
       this.$refs.addressInfoRef.resetFields();
       this.addAddrdialog = false;
       console.log(this.addressList);
