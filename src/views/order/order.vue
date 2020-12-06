@@ -148,7 +148,10 @@ export default {
   methods: {
     // 收货地址
     getAddress() {
-      let data = {};
+      let data = {
+        currPage: 1,
+        pageSize: 20,
+      };
       this.$http({
         method: "get",
         url: "/api/area/getAddress",
@@ -160,15 +163,14 @@ export default {
             let region = e.region.split(",");
             e.city = region[0] + region[1];
             e.detail = region[2] + e.detail;
-            if (e.IsDefault) {
+            if (e.isDefault == 1) {
               this.currentAddr = e;
-              e.IsDefault = true;
             } else {
-              e.IsDefault = false;
+              return;
             }
           });
           this.addressList.sort(function(a, b) {
-            return b.IsDefault - a.IsDefault;
+            return b.isDefault - a.isDefault;
           });
           console.log(this.addressList);
         } else {

@@ -83,7 +83,7 @@ export default {
       this.currentIndex = index;
     },
 
-    search() {
+    searchOrder() {
       console.log(123);
     },
 

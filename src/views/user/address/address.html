@@ -5,18 +5,20 @@
   </div>
 
   <div class="box-body">
-    <div class="box-item" v-for="(item,index) in addressList" :key="item.id" :class="{'active': (item.isDefault == 1)}">
-      <el-row class=" item-header" type="flex" justify="space-between">
-        <el-col :span="4" class="title-left">
+    <div class="box-card" v-for="(item,index) in addressList" :key="item.id" :class="{'active': (item.isDefault == 1)}">
+      <el-row class=" card-header" type="flex" justify="space-between">
+        <el-col :span="12" class="header-title">
           <div class="tag">{{item.tag}}</div>
           <div class="default" :style="{display:item.isDefault == 1 ? 'block' : 'none' }">默认</div>
         </el-col>
-        <el-col :span="1" class="title-rigth">
-          <a class="el-icon-close" href="javascript:;" @click="delAddress(index)"></a>
+        <el-col :span="12" class="header-btn">
+          <el-popconfirm @onConfirm="delAddress(index)" title="确定删除该地址吗？">
+            <a class="iconfont" slot="reference">&#xe61f;</a>
+          </el-popconfirm>
         </el-col>
       </el-row>
 
-      <table class="item-table">
+      <table class="card-table">
         <tr>
           <th>收货人 :</th>
           <td>{{item.consignee}}</td>
@@ -35,7 +37,7 @@
         </tr>
       </table>
 
-      <div class="item-footer">
+      <div class="card-footer">
         <a class="edit" href="javascript:;" @click="disAddress(index,item)">编辑</a>
         <a class="default" href="javascript:;" :style="{display:item.isDefault == 1 ? 'none' : 'block' }">设置默认</a>
       </div>
@@ -56,7 +58,7 @@
         </el-input>
       </el-form-item>
       <el-form-item label="收货人姓名" prop="Consignee">
-        <el-input class="input" v-model="addressInfo.Consignee" placeholder="长度不超过25个字符" size="small"></el-input>
+        <el-input class="input" v-model="addressInfo.consignee" placeholder="长度不超过25个字符" size="small"></el-input>
       </el-form-item>
       <el-form-item label="手机号码" prop="tel">
         <el-input class="input" v-model="addressInfo.tel" placeholder="电话号码、手机号码必须填一项" size="small"></el-input>

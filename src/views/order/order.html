@@ -13,7 +13,7 @@
           <div class="addr-wrap">
             <div class="addr-head">
               <span>{{item.city}}</span>
-              <span>({{item.Consignee}})</span>
+              <span>({{item.consignee}})</span>
             </div>
             <div class="addr-body">
               <span>{{item.detail}}</span>
@@ -25,7 +25,7 @@
             </div>
           </div>
           <a class="btn-action" href="javascript:;" @click="setDefaultAddr(index)" title="设置当前地址为默认">设为默认</a>
-          <a class="btn-default" href="javascript:;" :style="{display:item.IsDefault ? 'block' : 'none' }">默认地址</a>
+          <a class="btn-default" href="javascript:;" :style="{display:item.isDefault == 1 ? 'block' : 'none' }">默认地址</a>
         </div>
       </div>
 
@@ -155,7 +155,7 @@
         </div>
         <div>
           <span class="box-title">收件人:</span>
-          <span class="box-text">{{currentAddr.Consignee}} {{currentAddr.tel}}</span>
+          <span class="box-text">{{currentAddr.consignee}} {{currentAddr.tel}}</span>
         </div>
       </div>
     </div>

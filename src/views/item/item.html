@@ -1,6 +1,202 @@
 <div>
     <rz-header msg="日抓商城"></rz-header>
-    <!-- <div>item</div> -->
-    item
+
+    <div class="itembar wrap">
+        <div class="product-info">
+            <div class="preview-wrap">
+                <div class="preview">
+                    <div class="spec-img">
+                        <img src="../../assets/img/xiezi.jpg" alt="">
+                    </div>
+                    <div class="spec-list">
+                        <div class="left-btn">
+                            <button class="iconfont" href="">&#xe6a2;</button>
+                        </div>
+                        <div class="spec-items">
+                            <ul class="list-img">
+                                <li v-for="item in 8">
+                                    <img src="../../assets/img/xiezi.jpg" alt="">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right-btn">
+                            <button class="iconfont" href="">&#xe6a3;</button>
+                        </div>
+                    </div>
+                    <div class="spec-action">
+                        <div class="left-btn">
+                            <a href="" class="iconfont">&#xe611;</a>
+                        </div>
+                        <span class="text">收藏商品（17652）</span>
+                        <div class="right-btn">
+                            <a href="">举报</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="itemInfo-wrap">
+                <div class="itemInfo">
+                    <div class="item-title">
+                        <h1>【设计师合作款】女装 圆领T恤(短袖) 414443 优衣库UNIQLO</h1>
+                    </div>
+                    <div class="summary-price">
+                        <div class="price">
+                            <span class="first-label">价格</span>
+                            <span>￥79.66</span>
+                        </div>
+                        <div class="promo">
+                            <span class="first-label">促销</span>
+                            <span>满200元，包邮</span>
+                            <a class="discount" href="">更多优惠</a>
+                        </div>
+                    </div>
+                    <div class="freight-price">
+                        <div class="price">
+                            <span class="first-label">运费</span>
+                            <span>北京 至 深圳 宝安</span>
+                            <span>快递：10.00</span>
+                        </div>
+                    </div>
+                    <div class="choose-attrs">
+                        <div class="choose-attr-1">
+                            <span class="first-label">尺码</span>
+                            <ul class="size-list">
+                                <li v-for="item in 5">
+                                    <a>170/80A/S</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="choose-attr-2">
+                            <span class="first-label">主要颜色</span>
+                            <ul class="img-list">
+                                <li v-for="item in 8">
+                                    <img src="../../assets/img/xiezi.jpg" alt="">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="choose-attr-3">
+                            <span class="first-label">数量</span>
+                            <div class="input-number">
+                                <div class="input-text">
+                                    <input type="text" v-model="num">
+                                </div>
+                                <div class="input-btn">
+                                    <button class="iconfont" @click="handleChange('add')">&#xe66c;</button>
+                                    <button class="iconfont" @click="handleChange('sub')">&#xe66e;</button>
+                                </div>
+                                <span>件</span>
+                            </div>
+                            <span>有货</span>
+                        </div>
+                    </div>
+                    <div class="oper-btn">
+                        <button class="buy-btn">立即购买</button>
+                        <button class="addCart-btn">加入购物车</button>
+                    </div>
+                    <div class="server-commit">
+                        <span class="first-label">服务承诺</span>
+                        <ul class="server-list">
+                            <li v-for="item in serverList">
+                                <router-link :to="item.path">{{item.name}}</router-link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="track-wrap">
+                <div class="track">
+                    <div class="tarck-title">
+                        <s></s>
+                        <span>看了又看</span>
+                    </div>
+
+                    <div id="tarckList" class="tarck-list">
+                        <ul id="imgList" class="img-list">
+                            <li v-for="item in 10">
+                                <a href="">
+                                    <img src="../../assets/img/xiezi.jpg" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="track-more">
+                        <button @click="clickMore($event,'prev')" class="iconfont">&#xe66c;</button>
+                        <button @click="clickMore($event,'next')" class="iconfont">&#xe66e;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="item-middle">
+            <div class="item-aside">
+                <div class="aside-popbox">
+                    <div class="box-head">
+                        <span>优衣库官方旗舰店</span>
+                        <a href="">店铺切换</a>
+                    </div>
+                    <div class="box-body">
+                        <div>
+                            <i class="iconfont">&#xe60f;</i>
+                            <a href="">进店逛逛</a>
+                        </div>
+                        <div>
+                            <i class="iconfont">&#xe611;</i>
+                            <a href="">收藏店铺</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="aside-hotbox">
+                    <div class="box-head">
+                        <span>热销排行</span>
+                    </div>
+                    <div class="box-body">
+                        <ul class="item-list">
+                            <li v-for="item in 5">
+                                <div class="itme-image">
+                                    <a href="">
+                                        <img src="../../assets/img/xiezi.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="item-desc">
+                                    <span class="desc">【营养美味只需一口】ZEK 芝士鳕鱼肠 15克/根 7根装</span>
+                                </div>
+                                <div class="item-pri">
+                                    <span class="price">￥14.00</span>
+                                    <span class="sale">评价 265</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-detail">
+                <el-tabs type="border-card" style="box-shadow: none;">
+                    <el-tab-pane label="商品详情">
+                        <div class="attributes-list">
+                            <div class="brand-text">
+                                <p>品牌名称:</p>
+                            </div>
+                            <ul class="paramet-list">
+                                <li>适用阶段 :</li>
+                                <li>版本 :</li>
+                                <li>净含量 :</li>
+                                <li>厂名 :</li>
+                                <li>产地 :</li>
+                                <li>存储方式 :</li>
+                                <li>保质期 :</li>
+                            </ul>
+                        </div>
+                    </el-tab-pane>
+                    <el-tab-pane label="累计评价">配置管理</el-tab-pane>
+                </el-tabs>
+            </div>
+        </div>
+    </div>
+
     <rz-footer></rz-footer>
 </div>

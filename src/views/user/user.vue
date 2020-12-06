@@ -16,27 +16,33 @@ export default {
       tabsList: [
         {
           label: "我的收藏",
-          name: "favorite",
+          path: "favorite",
+          name: "Favorite",
         },
         {
           label: "我的积分",
-          name: "integral",
+          path: "integral",
+          name: "Integral",
         },
         {
           label: "我的订单",
-          name: "myorder",
+          path: "myorder",
+          name: "Myorder",
         },
         {
           label: "售后服务",
-          name: "saleService",
+          path: "saleService",
+          name: "SaleService",
         },
         {
           label: "评价管理",
-          name: "manage",
+          path: "manage",
+          name: "Manage",
         },
         {
           label: "收货地址",
-          name: "address",
+          path: "address",
+          name: "Address",
         },
       ],
     };
@@ -51,6 +57,10 @@ export default {
     //     return;
     //   }
     // },
+
+    asd() {
+      console.log(this.$route.path);
+    },
   },
 };
 </script>

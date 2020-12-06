@@ -2,15 +2,14 @@
   display: flex;
   justify-content: space-between;
 
-  div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+  ul {
+    padding-top: 25px;
     width: 240px;
     height: 118px;
-    background-color: #f7f7f7;
+    text-align: center;
     font-size: 14px;
+    background-color: #f7f7f7;
+    box-sizing: border-box;
 
     .num {
       font-size: 20px;
@@ -18,8 +17,10 @@
       color: #f40;
     }
 
-    span {
-      margin-bottom: 8px;
+    li {
+      overflow: hidden;
+      height: 32px;
+      line-height: 32px;
     }
   }
 }

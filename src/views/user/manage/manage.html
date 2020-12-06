@@ -1,5 +1,5 @@
 <div>
-  <div class="card-header">
+  <div class="box-header">
     <div class="header-title">
       <span>累积信: 41</span>
       <span>好评率：100%</span>
@@ -49,7 +49,7 @@
     </table>
   </div>
 
-  <div class="card-body">
+  <div class="box-body">
     <el-table :data="tableData" style="width: 100%">
       <el-table-column class="one" prop="eval" :render-header="renderFirstHeader" width="160" align="center">
       </el-table-column>
@@ -62,7 +62,7 @@
     </el-table>
   </div>
 
-  <div class="card-footer">
+  <div class="box-footer">
     <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage"
       :page-sizes="[10, 20, 30, 40]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="100">
     </el-pagination>

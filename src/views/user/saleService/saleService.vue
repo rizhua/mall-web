@@ -36,7 +36,7 @@ export default {
           state: "上门换新",
         },
       ],
-      getCodeList: [],
+      codeList: [],
       currentRange: "最近三个月",
       currentState: "处理中",
     };
@@ -53,9 +53,9 @@ export default {
         params: data,
       }).then((res) => {
         if (1000 == res.data.code) {
-          this.getCodeList = res.data.list;
+          this.codeList = res.data.list;
         } else {
-          this.getCodeList = [];
+          this.codeList = [];
         }
       });
     },

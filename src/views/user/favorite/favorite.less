@@ -1,3 +1,8 @@
+.box-header {
+  height: 40px;
+  line-height: 40px;
+}
+
 .tab-inline {
   display: flex;
   align-items: center;
@@ -13,13 +18,13 @@
 .box-body {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -0.5rem;
+  margin: 0 -8px;
 }
 
 .card {
   position: relative;
-  margin: 0 0.5rem 1rem 0;
-  width: 196px;
+  margin: 0 8px;
+  width: 195px;
 }
 
 .card-image {
@@ -27,6 +32,7 @@
 
   img {
     width: 100%;
+    cursor: pointer;
   }
 
   &:hover .delete {

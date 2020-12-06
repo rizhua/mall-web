@@ -51,9 +51,11 @@ export default {
       addAddrdialog: false,
     };
   },
+
   mounted() {
     this.getAddress();
   },
+
   methods: {
     getAddress() {
       let data = {
@@ -152,6 +154,10 @@ export default {
           this.getAddress();
         }
       });
+    },
+
+    confirm() {
+      console.log("成功");
     },
 
     resetForm() {
