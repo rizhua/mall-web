@@ -10,17 +10,21 @@
                     </div>
                     <div class="spec-list">
                         <div class="left-btn">
-                            <button class="iconfont" href="">&#xe6a2;</button>
+                            <button class="iconfont" @click="onToggle('prev')" href="">&#xe6a2;</button>
                         </div>
-                        <div class="spec-items">
-                            <ul class="list-img">
-                                <li v-for="item in 8">
-                                    <img src="../../assets/img/xiezi.jpg" alt="">
-                                </li>
-                            </ul>
-                        </div>
+
+                        <el-carousel class="spec-items" ref="specRef" width="320px" heigth="64px"
+                            indicator-position="none" :autoplay="false" :loop="false">
+                            <el-carousel-item class="list-img" v-for="item in 2" :key="item">
+                                <img v-for="(item,index) in 4" @mouseenter="addClass(index)"
+                                    :class="{'active2': currentImgIndex == index}" src="../../assets/img/xiezi.jpg"
+                                    alt="">
+                            </el-carousel-item>
+                        </el-carousel>
+
+
                         <div class="right-btn">
-                            <button class="iconfont" href="">&#xe6a3;</button>
+                            <button class="iconfont" @click="onToggle('next')" href="">&#xe6a3;</button>
                         </div>
                     </div>
                     <div class="spec-action">
@@ -62,7 +66,8 @@
                         <div class="choose-attr-1">
                             <span class="first-label">尺码</span>
                             <ul class="size-list">
-                                <li v-for="item in 5">
+                                <li v-for="(item,index) in 5" @click="toggleSize(index)"
+                                    :class="{'active': sizeIndex === index }">
                                     <a>170/80A/S</a>
                                 </li>
                             </ul>
@@ -70,10 +75,13 @@
                         <div class="choose-attr-2">
                             <span class="first-label">主要颜色</span>
                             <ul class="img-list">
-                                <li v-for="item in 8">
-                                    <img src="../../assets/img/xiezi.jpg" alt="">
+                                <li v-for="(item,index) in 8" @click="toggleImg(index)"
+                                    :class="{'active': imgIndex === index }">
+                                    <img src="../../assets/img/xiezi_01.jpg" alt="">
                                 </li>
                             </ul>
+
+
                         </div>
                         <div class="choose-attr-3">
                             <span class="first-label">数量</span>
@@ -113,18 +121,23 @@
                     </div>
 
                     <div id="tarckList" class="tarck-list">
-                        <ul id="imgList" class="img-list">
-                            <li v-for="item in 10">
+                        <el-carousel class="img-list" ref="trackRef" height="484px" indicator-position="none"
+                            direction="vertical" :autoplay="false">
+                            <el-carousel-item v-for="item in 10" :key="item">
                                 <a href="">
                                     <img src="../../assets/img/xiezi.jpg" alt="">
                                 </a>
-                            </li>
-                        </ul>
+                                <a href="">
+                                    <img src="../../assets/img/xiezi.jpg" alt="">
+                                </a>
+                            </el-carousel-item>
+                        </el-carousel>
                     </div>
 
+
                     <div class="track-more">
-                        <button @click="clickMore($event,'prev')" class="iconfont">&#xe66c;</button>
-                        <button @click="clickMore($event,'next')" class="iconfont">&#xe66e;</button>
+                        <button @click="onMore('prev')" class="iconfont">&#xe66c;</button>
+                        <button @click="onMore('next')" class="iconfont">&#xe66e;</button>
                     </div>
                 </div>
             </div>

@@ -48,14 +48,16 @@
 }
 
 .list-img {
-  li {
-    float: left;
-    margin-right: 16px;
-  }
   img {
+    margin-right: 16px;
     width: 64px;
     height: 64px;
+    border: 1px solid transparent;
+    box-sizing: border-box;
   }
+}
+.list-img .active2 {
+  border: 1px solid #f40;
 }
 
 .spec-action {
@@ -120,21 +122,32 @@
   display: flex;
 
   .size-list {
-    width: 450px;
+    width: 434px;
     overflow: hidden;
   }
+
   li {
     float: left;
     margin: 0 8px 8px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+
+    &:hover {
+      border: 1px solid #f40;
+    }
+
     a {
       display: inline-block;
       padding: 0 8px;
       height: 28px;
       line-height: 28px;
-      border: 1px solid #ccc;
       cursor: pointer;
     }
   }
+}
+
+.size-list .active {
+  border: 1px solid #f40;
 }
 
 .choose-attr-2 {
@@ -142,19 +155,26 @@
   margin: 16px 0;
 
   .img-list {
-    width: 450px;
+    width: 434px;
+  }
+  li {
+    float: left;
+    margin: 0 8px 8px 0;
+    height: 40px;
+    border: 2px solid transparent;
 
-    li {
-      float: left;
-      margin: 0 8px 8px 0;
-      height: 38px;
+    &:hover {
+      border: 2px solid #f40;
     }
+  }
 
-    img {
-      height: 38px;
-      width: 38px;
-      cursor: pointer;
-    }
+  .active {
+    border: 2px solid #f40;
+  }
+
+  img {
+    height: 40px;
+    cursor: pointer;
   }
 }
 
@@ -216,52 +236,44 @@
   width: 210px;
 }
 
-.track {
-  .tarck-title {
-    margin-bottom: 16px;
-    position: relative;
-    height: 15px;
-    overflow: hidden;
+.tarck-title {
+  margin-bottom: 16px;
+  position: relative;
+  height: 15px;
+  overflow: hidden;
 
-    s {
-      position: absolute;
-      top: 8px;
-      left: 30px;
-      width: 150px;
-      border-top: 1px #ccc dotted;
-      text-decoration: none;
-    }
+  s {
+    position: absolute;
+    top: 8px;
+    left: 30px;
+    width: 150px;
+    border-top: 1px #ccc dotted;
+    text-decoration: none;
+  }
 
-    span {
-      position: absolute;
-      color: #999;
-      text-align: center;
-      width: 84px;
-      top: 0;
-      left: 50%;
-      margin-left: -42px;
-      background-color: #fff;
-    }
+  span {
+    position: absolute;
+    color: #999;
+    text-align: center;
+    width: 84px;
+    top: 0;
+    left: 50%;
+    margin-left: -42px;
+    background-color: #fff;
   }
 }
 
 .tarck-list {
-  position: relative;
   margin-bottom: 16px;
   width: 210px;
   height: 452px;
   overflow: hidden;
-
   .img-list {
-    position: absolute;
-
-    li {
-      width: 210px;
-      height: 210px;
-      float: left;
+    a {
       margin-bottom: 32px;
+      display: inline-block;
+      line-height: 0px;
     }
-
     img {
       width: 210px;
       height: 210px;

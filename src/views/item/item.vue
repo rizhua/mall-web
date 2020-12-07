@@ -19,8 +19,11 @@ export default {
         { name: "七天无理由退换", path: "" },
         { name: "支付方式", path: "" },
       ],
+      imgList: [],
       num: 1,
-      currentIndex: 0,
+      sizeIndex: 0,
+      imgIndex: 0,
+      currentImgIndex: 0,
     };
   },
   methods: {
@@ -35,51 +38,31 @@ export default {
       }
     },
 
-    clickMore(e, type) {
-      console.log(type);
-      let imgList = document.getElementById("imgList");
-      let target = document.getElementById("tarckList").clientHeight + 32;
-      let imgLenght = imgList.clientHeight - 32;
-      console.log(target);
-      console.log(imgLenght);
-      if (type === "prev") {
-        if (this.currentIndex == 0) {
-          this.currentIndex = -4;
-          imgList.style.top = imgLenght;
-        } else {
-          this.currentIndex++;
-          target = this.currentIndex * target;
-          this.animate(imgList, target);
-          console.log(this.currentIndex);
-        }
+    onMore(type) {
+      if (type == "prev") {
+        this.$refs.trackRef.prev();
       } else {
-        if (this.currentIndex !== -4) {
-          this.currentIndex--;
-          target = this.currentIndex * target;
-          this.animate(imgList, target);
-        } else {
-          this.currentIndex = 0;
-          imgList.style.top = 0;
-        }
-        console.log(this.currentIndex);
+        this.$refs.trackRef.next();
       }
-      console.log(imgList.offsetTop);
     },
 
-    animate(obj, target) {
-      clearInterval(obj.timer);
-      obj.timer = setInterval(() => {
-        let leader = obj.offsetTop;
-        let step = 20;
-        step = leader < target ? step : -step;
-        if (Math.abs(leader - target) >= Math.abs(step)) {
-          leader = leader + step;
-          obj.style.top = leader + "px";
-        } else {
-          obj.style.top = target + "px";
-          clearInterval(obj.timer);
-        }
-      }, 15);
+    onToggle(type) {
+      if (type == "prev") {
+        this.$refs.specRef.prev();
+      } else {
+        this.$refs.specRef.next();
+      }
+    },
+
+    addClass(index) {
+      this.currentImgIndex = index;
+    },
+
+    toggleSize(index) {
+      this.sizeIndex = index;
+    },
+    toggleImg(index) {
+      this.imgIndex = index;
     },
   },
 };
