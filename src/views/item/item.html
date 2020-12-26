@@ -6,25 +6,22 @@
             <div class="preview-wrap">
                 <div class="preview">
                     <div class="spec-img">
-                        <img src="../../assets/img/xiezi.jpg" alt="">
+                        <img :src="currentImage" alt="">
                     </div>
                     <div class="spec-list">
-                        <div class="left-btn">
-                            <button class="iconfont" @click="onToggle('prev')" href="">&#xe6a2;</button>
+                        <div class="spec-button-prev">
+                            <button class=" iconfont" href="">&#xe6a2;</button>
                         </div>
 
-                        <el-carousel class="spec-items" ref="specRef" width="320px" heigth="64px"
-                            indicator-position="none" :autoplay="false" :loop="false">
-                            <el-carousel-item class="list-img" v-for="item in 2" :key="item">
-                                <img v-for="(item,index) in 4" @mouseenter="addClass(index)"
-                                    :class="{'active2': currentImgIndex == index}" src="../../assets/img/xiezi.jpg"
-                                    alt="">
-                            </el-carousel-item>
-                        </el-carousel>
+                        <swiper class="spec-swiper  swiper-no-swiping" :options=" specSwiperOption" ref="mySpecSwiper">
+                            <swiper-slide v-for="(item,index) in imageList" :key="index">
+                                <img :class="{activeImg: index == currentImgIndex}" @mouseenter="addClass(index)"
+                                    :src="item.src" alt="">
+                            </swiper-slide>
+                        </swiper>
 
-
-                        <div class="right-btn">
-                            <button class="iconfont" @click="onToggle('next')" href="">&#xe6a3;</button>
+                        <div class="spec-button-next">
+                            <button class="iconfont" href="">&#xe6a3;</button>
                         </div>
                     </div>
                     <div class="spec-action">
@@ -120,24 +117,16 @@
                         <span>看了又看</span>
                     </div>
 
-                    <div id="tarckList" class="tarck-list">
-                        <el-carousel class="img-list" ref="trackRef" height="484px" indicator-position="none"
-                            direction="vertical" :autoplay="false">
-                            <el-carousel-item v-for="item in 10" :key="item">
-                                <a href="">
-                                    <img src="../../assets/img/xiezi.jpg" alt="">
-                                </a>
-                                <a href="">
-                                    <img src="../../assets/img/xiezi.jpg" alt="">
-                                </a>
-                            </el-carousel-item>
-                        </el-carousel>
-                    </div>
-
-
+                    <swiper class="tarck-swiper" :options="tarckSwiperOption" ref="mySwiper">
+                        <swiper-slide v-for="item in 7">
+                            <a href="">
+                                <img src="../../assets/img/xiezi.jpg" alt="">
+                            </a>
+                        </swiper-slide>
+                    </swiper>
                     <div class="track-more">
-                        <button @click="onMore('prev')" class="iconfont">&#xe66c;</button>
-                        <button @click="onMore('next')" class="iconfont">&#xe66e;</button>
+                        <button class="tarck-button-prev iconfont">&#xe66c;</button>
+                        <button class="tarck-button-next iconfont">&#xe66e;</button>
                     </div>
                 </div>
             </div>
@@ -210,6 +199,4 @@
             </div>
         </div>
     </div>
-
-    <rz-footer></rz-footer>
 </div>
