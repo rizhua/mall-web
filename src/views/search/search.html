@@ -1,5 +1,98 @@
 <div>
+
     <rz-header msg="日抓商城"></rz-header>
-    <div>search</div>
+
+    <div class="search wrap">
+        <div class="search-breadcrumb">
+            <el-breadcrumb separator-class="el-icon-arrow-right">
+                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                <el-breadcrumb-item>鞋</el-breadcrumb-item>
+            </el-breadcrumb>
+        </div>
+
+        <div class="search-select-warp">
+            <div class="select-line" v-for="(items,index) in searchList[0]" :key="index">
+                <div class="select-th">
+                    {{items.title}}
+                </div>
+                <div class="select-td-list">
+                    <ul class="type-list" :class="{'moreActive':items.active}">
+                        <li v-for="item in items.children">
+                            <a href="javascript:;">{{item.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="select-td-oper">
+                    <div class="more-btn" v-if="items.children.length > 7" @click="onMoreType(items)">
+                        <span>更多</span>
+                        <i class="iconfont">&#xe6a4;</i>
+                    </div>
+                </div>
+            </div>
+            <div class="select-line-last">
+                <div class="select-th">高级选项</div>
+                <div class="select-td-list">
+                    <div class="option-btn" v-for="(item,index) in searchList[1].type"
+                        @mouseenter="getMoreSpec(index,'enter')" @mouseleave="getMoreSpec(index,'leave')" :key="index">
+                        <span>{{item.name}}</span>
+                        <i class="iconfont">&#xe6a4;</i>
+
+                        <!-- <div class="select-box">
+                            <ul class="spec-value" style="display: none;">
+                                <li>
+                                    <a href=""></a>
+                                </li>
+                            </ul>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="select-box">
+                    <ul class="spec-value" style="display: none;" v-for="item in searchList[1].type">
+                        <li v-for="item2 in item.children">
+                            <a href="">{{item2.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-oper-wrap">
+            <div class="left-oper">
+                <a :class="{'operActive': operActiveIndex === index}" @click="changeItem(index)"
+                    v-for="(item,index) in ['综合','销量','新品']" :key="index" href="javascript:;">{{item}}</a>
+            </div>
+            <div class="rigth-oper">
+                <span class="page-text">
+                    <b>1</b>
+                    <em>/</em>
+                    <i>21</i>
+                </span>
+                <button class="iconfont">&#xe6a2;</button>
+                <button class="iconfont">&#xe6a3;</button>
+            </div>
+        </div>
+
+        <div class="search-goods-wrap">
+            <div class="goods-item" v-for="item in 12">
+                <div class="item-image">
+                    <img src="../../assets/img/xiezi2.jpg" alt="">
+                </div>
+                <div class="item-text">
+                    <a>MEDIHEAL 美迪恵尔 胶原蛋白美白精华面</a>
+                    <p>29.90</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="search-pagin">
+            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                :current-page="currentPage4" :page-sizes="[100, 200, 300, 400]" :page-size="100"
+                layout="total, sizes, prev, pager, next, jumper" :total="400">
+            </el-pagination>
+        </div> -->
+
+    </div>
+
     <rz-footer></rz-footer>
 </div>

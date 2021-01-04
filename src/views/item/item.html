@@ -10,7 +10,7 @@
                     </div>
                     <div class="spec-list">
                         <div class="spec-button-prev">
-                            <button class=" iconfont" href="">&#xe6a2;</button>
+                            <button class="iconfont" href="">&#xe6a2;</button>
                         </div>
 
                         <swiper class="spec-swiper  swiper-no-swiping" :options=" specSwiperOption" ref="mySpecSwiper">
@@ -118,9 +118,9 @@
                     </div>
 
                     <swiper class="tarck-swiper" :options="tarckSwiperOption" ref="mySwiper">
-                        <swiper-slide v-for="item in 7">
-                            <a href="">
-                                <img src="../../assets/img/xiezi.jpg" alt="">
+                        <swiper-slide v-for="item in imageList" :key="index">
+                            <a href="javascript:;">
+                                <img :src="item.src" alt="">
                             </a>
                         </swiper-slide>
                     </swiper>

@@ -32,7 +32,7 @@ export default {
         speed: 200,
         slidesPerView: 2,
         slidesPerGroup: 2,
-        spaceBetween: 35,
+        spaceBetween: 38,
         simulateTouch: false,
         direction: "vertical",
         navigation: {
