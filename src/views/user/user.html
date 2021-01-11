@@ -1,0 +1,20 @@
+<div>
+  <rz-header></rz-header>
+
+  <div class="userbar wrap">
+    <div class="user-tabs">
+      <a :class="{active: $route.name === item.name}" :href="'/user'+'/'+ item.path" v-for="(item,index) in tabsList"
+        :key="item.id">
+        {{item.label}}
+      </a>
+    </div>
+
+    <div class="main">
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+    </div>
+  </div>
+
+  <rz-footer></rz-footer>
+</div>

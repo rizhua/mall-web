@@ -1,42 +1,54 @@
 @charset "utf-8";
 
 body {
-    margin: 0;
-    overflow-x: hidden;
-    font-size: 12px/1.5;
-    font-family: PingFangSC, helvetica neue, hiragino sans gb, arial, microsoft yahei ui, microsoft yahei, simsun, sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  font-size: 12px/1.5;
+  font-family: PingFangSC, helvetica neue, hiragino sans gb, arial,
+    microsoft yahei ui, microsoft yahei, simsun, sans-serif;
 }
 
 a {
-    color: #666;
-    text-decoration: none;
+  color: #666;
+  text-decoration: none;
 }
 
 input {
-    border-width: 1px;
+  border-width: 1px;
+  background: none;
+  outline: none;
+  border: 1px solid #ccc;
 }
 
 button {
-    border-width: 1px;
+  border-width: 1px;
+  background: none;
+  outline: none;
+  border: 1px solid #ccc;
+  cursor: pointer;
 }
 
 // 列表
 .no-bullet {
-    margin: 0;
-    padding-left: 0;
-    list-style: none;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
 
-    li {
-        list-style-image: none;
-        list-style-type: none;
-    }
+  li {
+    list-style-image: none;
+    list-style-type: none;
+  }
 }
 
 ul {
-    .no-bullet
+  .no-bullet;
 }
 
 .wrap {
-    margin: 0 auto;
-    width: 1206px;
+  margin: 0 auto;
+  width: 1206px;
+}
+
+.box {
+  background-color: #fff;
 }

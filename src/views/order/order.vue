@@ -124,7 +124,7 @@ export default {
       currentAddr: {},
       addressList: [],
       addressInfo: {},
-      currentIndex: 1,
+      currentIndex: 0,
       totalPriceAll: 0,
       addAddrdialog: false,
     };
@@ -148,7 +148,10 @@ export default {
   methods: {
     // 收货地址
     getAddress() {
-      let data = {};
+      let data = {
+        currPage: 1,
+        pageSize: 20,
+      };
       this.$http({
         method: "get",
         url: "/api/area/getAddress",
@@ -160,17 +163,15 @@ export default {
             let region = e.region.split(",");
             e.city = region[0] + region[1];
             e.detail = region[2] + e.detail;
-            if (e.IsDefault) {
+            if (e.isDefault == 1) {
               this.currentAddr = e;
-              e.IsDefault = true;
             } else {
-              e.IsDefault = false;
+              return;
             }
           });
-          console.log(this.addressList);
-          // this.addressList.sort(function(a, b) {
-          //   return b.IsDefault - a.IsDefault;
-          // });
+          this.addressList.sort(function(a, b) {
+            return b.isDefault - a.isDefault;
+          });
         } else {
           this.addressList = [];
         }
@@ -265,18 +266,19 @@ export default {
     },
 
     // 修改或新建地址对话框
-    disAddress(idx) {
-      console.log(idx);
+    disAddress(idx, item) {
       this.addAddrdialog = true;
+      this.addressInfo = {};
       if (!isNaN(idx)) {
-        this.addressInfo = this.addressList[idx];
+        this.addressInfo = Object.assign({}, item);
         this.addressInfo.addrId = [3392, 3496, 3503];
       } else {
-        this.addressInfo = {};
+        console.log(idx);
       }
     },
 
     resetForm() {
+      this.addressInfo = {};
       this.$refs.addressInfoRef.resetFields();
       this.addAddrdialog = false;
       console.log(this.addressList);

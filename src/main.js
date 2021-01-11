@@ -20,7 +20,7 @@ Vue.prototype.$http = axios;
 Vue.filter('curreny', function (value) {
   const tempVal = Number(value).toFixed(3);
   if (tempVal === "NaN") {
-    return "0.00";
+    return 0.00;
   }
   const realVal = tempVal.substring(0, tempVal.length - 1);
   return realVal;

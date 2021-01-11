@@ -1,0 +1,33 @@
+<div class="box">
+  <div class="box-header">
+    <ul class="tab-inline">
+      <li class="tab-item">
+        <a href="">全部(10)</a>
+      </li>
+      <li class="tab-item">
+        <a href="">失效</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="box-body">
+    <div class="card" v-for="(item,index) in 12">
+      <div class="card-image">
+        <img src="../../../assets/img/xiezi.jpg" alt="">
+        <div class="delete" @click="delCard(index)">
+          <i class="iconfont">&#xe618;</i>
+        </div>
+      </div>
+      <div class="card-text">
+        <a>MEDIHEAL 美迪恵尔 胶原蛋白美白精华面</a>
+        <p>29.90</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="box-footer">
+    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage"
+      :page-sizes="[10, 20, 30, 40]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="100">
+    </el-pagination>
+  </div>
+</div>

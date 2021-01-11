@@ -1,0 +1,35 @@
+.userbar {
+  display: flex;
+  padding: 24px 0;
+  overflow: hidden;
+}
+
+.user-tabs {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  height: 324px;
+  width: 167px;
+  box-sizing: border-box;
+
+  a {
+    flex: 1;
+    line-height: 54px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+      color: #f40;
+    }
+  }
+}
+
+.active {
+  color: #f40;
+}
+
+.main {
+  flex: 1;
+  overflow: hidden;
+}

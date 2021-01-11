@@ -1,0 +1,82 @@
+.box-header {
+  height: 40px;
+  line-height: 40px;
+}
+
+.tab-inline {
+  display: flex;
+  align-items: center;
+}
+
+.tab-item {
+  margin-right: 24px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.box-body {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+}
+
+.card {
+  position: relative;
+  margin: 0 8px;
+  width: 195px;
+}
+
+.card-image {
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  &:hover .delete {
+    display: block;
+  }
+
+  .delete {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f40;
+    }
+
+    i {
+      font-size: 20px;
+      color: #fff;
+    }
+  }
+}
+
+.card-text {
+  text-align: center;
+
+  a {
+    margin-top: 8px;
+    color: #303133;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    cursor: pointer;
+  }
+}
+
+.box-footer {
+  text-align: right;
+}
