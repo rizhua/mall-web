@@ -92,5 +92,13 @@ export default {
       this.imgIndex = idx;
     },
   },
+  data() {
+    return {
+      user: {
+        firstName: "huang",
+        lastName: "guang",
+      },
+    };
+  },
 };
 </script>

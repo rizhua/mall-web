@@ -172,7 +172,6 @@ export default {
           this.addressList.sort(function(a, b) {
             return b.isDefault - a.isDefault;
           });
-          console.log(this.addressList);
         } else {
           this.addressList = [];
         }
